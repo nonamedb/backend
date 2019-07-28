@@ -10,24 +10,24 @@ from layer_business.calculator import VacanciesCalculatorBL
 class CalculatorValidatorMixin:
 
     @staticmethod
-    def _spec_id_validator(value, default):
+    def _spec_validator(value, default):
         return value if value else default
 
     @staticmethod
     def _year_validator(value, default):
-        return value if value else default
+        return int(value) if value else default
 
     @staticmethod
     def _labor_coef_validator(value, default):
-        return value if value else default
+        return float(value) if value else default
 
     @staticmethod
     def _delta_industry_validator(value, default):
-        return value if value else default
+        return float(value) if value else default
 
     @staticmethod
     def _released_coef_validator(value, default):
-        return value if value else default
+        return float(value) if value else default
 
 
 class CalculatorView(BaseView, CalculatorValidatorMixin):
@@ -64,6 +64,6 @@ class CalculatorView(BaseView, CalculatorValidatorMixin):
                       delta_industry=self.params_storage['delta_industry'])
         return calculator.calculate(spec=spec, year=year, **params)
 
-    def post(self):
+    def post(self, *args, **kwargs):
         data = self._calculate()
-        return self._render_popup_response(data=data)
+        return self._render_popup_response({'calculate': data})

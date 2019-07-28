@@ -3,9 +3,8 @@
 
 import os
 import json
-from django.forms.models import model_to_dict
 
-from config.settings import STATISTICS_ROOT
+from config.settings import STATISTICS_ROOT, ROOT_PATH
 
 
 class VacanciesCalculatorBL:
@@ -24,8 +23,8 @@ class VacanciesCalculatorBL:
 
     @staticmethod
     def _load_file(filename):
-        with open(filename, 'r'):
-            return json.loads(filename)
+        with open(os.path.join(ROOT_PATH, filename), 'r') as f:
+            return json.loads(f.read())
 
     def calculate(self, spec, year, **params):
         vacancies_start_data = self.load_start_data('vacancies', spec)

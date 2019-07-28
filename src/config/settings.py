@@ -29,9 +29,11 @@ SITE_ID = 1
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
+ROOT_PATH = os.getenv('ROOT_PATH', os.getcwd())
+
 
 # Application definition
 
@@ -55,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -68,7 +70,6 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            'templates'
         ],
         'APP_DIRS': True,
         'OPTIONS': {
@@ -155,8 +156,8 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'notarius',
-        'USER': 'notarius',
+        'NAME': 'nonamedb_backend',
+        'USER': 'nonamedb',
         'PASSWORD': None,
         'HOST': DB_HOST,
         'PORT': '5432',

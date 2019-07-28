@@ -7,10 +7,10 @@ from leon_base.base.views import BaseView
 from layer_business.calculator import VacanciesCalculatorBL
 
 
-class CalculatorValidatorMixin:
+class StatisticsValidatorMixin:
 
     @staticmethod
-    def _spec_id_validator(value, default):
+    def _spec_validator(value, default):
         return value if value else default
 
     @staticmethod
@@ -22,7 +22,7 @@ class CalculatorValidatorMixin:
         return value if value else default
 
 
-class StatisticsView(BaseView, CalculatorValidatorMixin):
+class StatisticsView(BaseView, StatisticsValidatorMixin):
 
     template_popup = {}
     data_popup = {}
