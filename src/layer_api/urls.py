@@ -17,6 +17,7 @@ Including another URLconf
 
 from django.conf.urls import url
 from .calculator_views import CalculatorView
+from .prediction_views import PredictionView
 from .stat_views import StatisticsView
 
 
@@ -25,7 +26,11 @@ urlpatterns = [
         StatisticsView.as_view(popup=True),
         name='statistics'),
 
-    url(r'^prediction/$',
+    url(r'^calculator/$',
         CalculatorView.as_view(popup=True),
         name='calculator'),
+
+    url(r'^prediction/$',
+        PredictionView.as_view(popup=True),
+        name='prediction')
 ]

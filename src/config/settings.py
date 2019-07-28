@@ -153,14 +153,22 @@ DATE_INPUT_FORMATS = ['%Y-%m-%d']
 WSGI_APPLICATION = 'config.wsgi.application'
 
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'nonamedb_backend',
+#         'USER': 'nonamedb',
+#         'PASSWORD': None,
+#         'HOST': DB_HOST,
+#         'PORT': '5432',
+#     }
+# }
+
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nonamedb_backend',
-        'USER': 'nonamedb',
-        'PASSWORD': None,
-        'HOST': DB_HOST,
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'sqlite3.db'
     }
 }
 
@@ -202,3 +210,14 @@ MEDIA_ROOT = os.path.join(SITE_ROOT, 'media')
 
 
 STATISTICS_ROOT = 'statistics'
+SPECIALIZATIONS = {
+    'developer': 'Программист',
+    'cook': 'Повар',
+    'painter': 'Художник',
+    'lawyer': 'Юрист',
+    'tutor': 'Учитель'
+}
+LABOR_COEF = 0.2
+RELEASED_COEF = 0.3
+DELTA_INDUSTRY = 0.2
+
