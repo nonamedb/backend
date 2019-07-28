@@ -16,7 +16,7 @@ import django
 django.setup()
 
 
-URL = 'http://localhost:8080'
+URL = 'http://83.220.170.234:8080'
 
 
 def test_predictor_get():

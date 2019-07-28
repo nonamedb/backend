@@ -31,6 +31,9 @@ SITE_ID = 1
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+CORS_ORIGIN_ALLOW_ALL = DEBUG
+
+
 DB_HOST = os.getenv('DB_HOST', '127.0.0.1')
 ROOT_PATH = os.getenv('ROOT_PATH', os.getcwd())
 
@@ -60,7 +63,7 @@ MIDDLEWARE = [
     # 'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.contrib.sites.middleware.CurrentSiteMiddleware'
 ]
 
