@@ -2,6 +2,7 @@
 
 
 import json
+import random
 from django.http import JsonResponse
 from django.conf import settings
 from leon_base.base.views import BaseView
@@ -63,22 +64,22 @@ class PredictionView(BaseView, PredictionValidatorMixin):
             res.append({
                 'label': spec_label,
                 'abbr': spec_abbr,
-                'current': 5,
+                'current': random.choice([15, 20, 22, 25, 30]),
                 'prediction': prediction,
-                'students': 5
+                'students': random.choice([15, 20, 22, 25, 30])
             })
         return self._render_popup_response({'data': res})
 
     def post(self, *args, **kwargs):
         post_data = self.params_storage['data']
         res = []
-        for spec_abbr, spec_label in settings.SPECIALIZATIONS:
+        for spec_abbr, spec_label in settings.SPECIALIZATIONS.items():
             prediction = self._calculate(spec_abbr, PREDICTION_YEAR)
             res.append({
                 'label': spec_label,
                 'abbr': spec_abbr,
-                'current': 5,
+                'current': random.choice([15, 20, 22, 25, 30]),
                 'prediction': prediction,
-                'students': 5
+                'students': random.choice([15, 20, 22, 25, 30])
             })
         return self._render_popup_response({'data': res})
